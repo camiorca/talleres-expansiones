@@ -35,6 +35,10 @@ define(['model/_sportModel'], function() {
             if(!attrs.name){
                 validationMessage = "The name can't be empty.";
             }
+            if (parseInt(attrs.minAge)>parseInt(attrs.maxAge))
+            {
+                 validationMessage ="La edad mínima no puede ser mayor a la edad máxima.";
+            }
             if(validationMessage.length>0){
                return validationMessage;
             }
