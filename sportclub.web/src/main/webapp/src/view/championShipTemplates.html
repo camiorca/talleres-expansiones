@@ -6,7 +6,8 @@
     <tr>
 		 <th>Nombre</th>
 		 <th>Fecha de Inicio</th>
-		 <th>Fecha de Finalización</th>
+		 <th>Fecha de FinalizaciÃ³n</th>
+		 <th>Calcular costo</th>
                  <th>Acciones</th>
     </tr>
     </thead>
@@ -16,6 +17,7 @@
 		<td><%= htmlEncode(championShip.getDisplay('name')) %></td>
 		<td><%= htmlEncode(championShip.getDisplay('startDate')) %></td>
 		<td><%= htmlEncode(championShip.getDisplay('endDate')) %></td>
+		<td><a onclick="Backbone.trigger('<%= componentId %>championship-show-cost,{startDate:<%= htmlEncode(championShip.getDisplay('startDate')) %>,endDate:<%= htmlEncode(championShip.getDisplay('endDate')) %>}); return false;">Calcular Costo</a></td>
     <td>
     <% if(showEdit) {%>
     <a onclick="Backbone.trigger('<%= componentId %>-championShip-edit',{id:<%= championShip.id %>}); return false" >Editar</a> |
