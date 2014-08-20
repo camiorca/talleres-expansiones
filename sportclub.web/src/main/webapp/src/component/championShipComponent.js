@@ -45,7 +45,7 @@ define(['component/_CRUDComponent', 'controller/toolbarController', 'model/toolb
             this.toolbarModel.set('title', 'Campeonato');
             this.addButton({name: "Idioma", icon: "glyphicon-question-sign", }, function() {
                  self.componentController.language();
-            });,
+            });
             Backbone.on(self.componentId + '-championship-show-cost', function(params) {
                 self.componentController.cost(params);
             });
