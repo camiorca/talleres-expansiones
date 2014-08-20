@@ -17,30 +17,53 @@
     </thead>
     <tbody>
     <% _.each(members, function(member) { %>
-    <tr>
-		<td><%= htmlEncode(member.getDisplay('name')) %></td>
-		<td><%= htmlEncode(member.getDisplay('firstName')) %></td>
-		<td><%= htmlEncode(member.getDisplay('lastName')) %></td>
-                <% if( member.birthDate !=== null) { %>
-                <% var split = member.birthDate.split('-'); %>
-                <% var año = split[0]; %>
-                <% if(split-año < 18) { %>
-                
-                    
-		<td><%= htmlEncode(member.getDisplay('birthDate')) %></td>
-		<td><%= htmlEncode(member.getDisplay('enable')) %></td>
-		<td><%= htmlEncode(member.getDisplay('docNumber')) %></td>
-		<td><%= htmlEncode(member.getDisplay('documenttypeId')) %></td>
-		<td><%= htmlEncode(member.getDisplay('partnerId')) %></td>
-    <td>
-    <% if(showEdit) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-member-edit',{id:<%= member.id %>}); return false" >Edit</a> |
-	<% } %> 
-	<% if(showDelete) {%>
-    <a onclick="Backbone.trigger('<%= componentId %>-member-delete',{id:<%= member.id %>}); return false" >Delete</a> 
-	<% } %>    
-	</td>
-    </tr>
+    <% var d = new Date().getFullYear(); %>
+            <% console.log('Fecha actual: '+d)%>
+            <% console.log('Fecha de Nacimiento: '+member.getDisplay('birthDate'))%>
+            <% var splits = member.getDisplay('birthDate').split('/') %>
+            <% var year = splits[2]%>
+            <% console.log('Año de fecha: '+year)%>
+            <% if (parseInt(d) - parseInt(year) < 18) { %>
+                <tr class="warning">
+                    <td><%= htmlEncode(member.getDisplay('name')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('firstName')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('lastName')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('birthDate')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('birthDate')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('enable')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('docNumber')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('documenttypeId')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('partnerId')) %></td>
+                    <td>
+                        <% if(showEdit) {%>
+                        <a onclick="Backbone.trigger('<%= componentId %>-member-edit',{id:<%= member.id %>}); return false" >Edit</a> |
+                        <% } %> 
+                        <% if(showDelete) {%>
+                        <a onclick="Backbone.trigger('<%= componentId %>-member-delete',{id:<%= member.id %>}); return false" >Delete</a> 
+                        <% } %>    
+                        </td>
+                </tr>
+            <% } else { %>
+                <tr>
+                    <td><%= htmlEncode(member.getDisplay('name')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('firstName')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('lastName')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('birthDate')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('birthDate')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('enable')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('docNumber')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('documenttypeId')) %></td>
+                    <td><%= htmlEncode(member.getDisplay('partnerId')) %></td>
+                    <td>
+                    <% if(showEdit) {%>
+                    <a onclick="Backbone.trigger('<%= componentId %>-member-edit',{id:<%= member.id %>}); return false" >Edit</a> |
+                    <% } %>     
+                    <% if(showDelete) {%>
+                    <a onclick="Backbone.trigger('<%= componentId %>-member-delete',{id:<%= member.id %>}); return false" >Delete</a> 
+                    <% } %>    
+                    </td>
+                </tr>
+            <% } %>
     <% }); %>
     </tbody>
     </table>
