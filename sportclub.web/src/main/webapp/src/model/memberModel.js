@@ -33,7 +33,7 @@ define(['model/_memberModel'], function() {
  	validate: function(attrs,options){
             var validationMessage = "";
             if(!attrs.name){
-                validationMessage = "The name can't be empty.";
+                validationMessage = "El nombre no puede ser vacío.";
             }
             var fechaActual= new Date();
             if(!attrs.name){

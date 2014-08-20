@@ -43,7 +43,6 @@ define(['model/_sportModel'], function() {
                return validationMessage;
             }
         }
-
     });
 
     App.Model.SportList = App.Model._SportList.extend({
