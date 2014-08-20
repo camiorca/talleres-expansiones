@@ -44,6 +44,9 @@ define(['component/_CRUDComponent', 'controller/toolbarController', 'model/toolb
             this.addButton({name: "Idioma", icon: "glyphicon-question-sign", }, function() {
                  self.componentController.language();
             });
+            Backbone.on(self.componentId + '-referee-show-exp', function(params) {
+                self.componentController.experience(params);
+            });
         }
     });
     return App.Component.RefereeComponent;
