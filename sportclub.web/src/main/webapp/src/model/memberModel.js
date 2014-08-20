@@ -35,6 +35,40 @@ define(['model/_memberModel'], function() {
             if(!attrs.name){
                 validationMessage = "The name can't be empty.";
             }
+            var fechaActual= new Date();
+            if(!attrs.name){
+                validationMessage = "The name can't be empty.";
+            }
+            if(!attrs.firstName){
+                validationMessage = "The first name can't be empty.";
+            }
+            if(!attrs.lastName){
+                validationMessage = "The last namecan't be empty.";
+            }
+            if(!attrs.birthDate){
+                validationMessage = "The birth date can't be empty.";
+            }
+            if(!attrs.docNumber){
+                validationMessage = "The document number can't be empty.";
+            }
+            if(!attrs.documenttypeId){
+                validationMessage = "The document type can't be empty.";
+            }
+            if(!attrs.partnerId){
+                validationMessage = "The partner's id can't be empty.";
+            }
+            if(attrs.docNumber.length<5)
+            {
+                validationMessage= "The document number must be more than 5 characters long";
+            }
+            if(!attrs.birthDate<fechaActual)
+            {
+                validationMessage= "The birth date cannot be today nor in the future";
+            }
+            if(fechaActual.getFullYear()-100 > attrs.birthDate.getFullYear())
+            {
+                validationMessage= "You cannot be over a hundred years old";
+            }
             if(validationMessage.length>0){
                return validationMessage;
             }
