@@ -60,6 +60,10 @@ define(['model/_addressModel'], function() {
             {
                 validationMessage="The avenue can't have more than 3 numbers";
             }
+            if(!attrs.country)
+            {
+                validationMessage="The country can't be empty";
+            }
             if(validationMessage.length>0){
                return validationMessage;
             }
