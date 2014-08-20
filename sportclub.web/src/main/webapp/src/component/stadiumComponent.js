@@ -44,6 +44,9 @@ define(['component/_CRUDComponent', 'controller/toolbarController', 'model/toolb
             this.addButton({name: "Idioma", icon: "glyphicon-question-sign", }, function() {
                  self.componentController.language();
             });
+            Backbone.on(self.componentId + '-stadium-show-class', function(params) {
+                self.componentController.capacidad(params);
+            });
         }
     });
     return App.Component.StadiumComponent;
