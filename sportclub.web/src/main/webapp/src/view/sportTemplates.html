@@ -7,6 +7,8 @@
 		 <th>Name</th>
 		 <th>Min Age</th>
 		 <th>Max Age</th>
+		        <th>Calcular Promedio</th>
+                        <th>Actions</th>
     <th>Actions</th>
     </tr>
     </thead>
@@ -16,6 +18,7 @@
 		<td><%= htmlEncode(sport.getDisplay('name')) %></td>
 		<td><%= htmlEncode(sport.getDisplay('minAge')) %></td>
 		<td><%= htmlEncode(sport.getDisplay('maxAge')) %></td>
+		<td><a onclick="Backbone.trigger('<%= componentId %>-sport-show-average',{maxAge:<%= htmlEncode(sport.getDisplay('maxAge')) %>,minAge:<%= htmlEncode(sport.getDisplay('minAge')) %>}); return false;" >Ver Promedio</a></td>
     <td>
     <% if(showEdit) {%>
     <a onclick="Backbone.trigger('<%= componentId %>-sport-edit',{id:<%= sport.id %>}); return false" >Edit</a> |
@@ -55,7 +58,7 @@
 
 <script type="text/template" id="sportPromedioList">
     <div class="panel panel-default">
-    <!-- La información se va a presentar en una tabla -->
+    <!-- La informaciÃ³n se va a presentar en una tabla -->
     <table class="table striped">
 <!-- Estos son los encabezados de la tabla para cada campo del model (estos se visualizan) -->
     <thead>
@@ -65,12 +68,12 @@
     </tr>
     </thead>
     <tbody>
-<!-- Aqui se renderizan los modelos existentes en el modelo de la lista sports. Note el uso de javascript en el interior de los tags <% %> (en este caso un bucle que toma cada ítem de la lista ‘sports’). La variable ‘sports’ será instanciada por el controlador (se verá más adelante) -->
+<!-- Aqui se renderizan los modelos existentes en el modelo de la lista sports. Note el uso de javascript en el interior de los tags <% %> (en este caso un bucle que toma cada Ã­tem de la lista â€˜sportsâ€™). La variable â€˜sportsâ€™ serÃ¡ instanciada por el controlador (se verÃ¡ mÃ¡s adelante) -->
     <% _.each(sports, function(sport) { %>
 <!-- Se hace un nuevo <tr> por cada elemento en la lista-->
     <tr>
             <td><%= htmlEncode(sport.getDisplay('name')) %></td>
-            <!-- esta instrucción indica qué campo del elemento actual del bucle se debe mostrar en ese lugar (cada <td> es una columna)>  -->
+            <!-- esta instrucciÃ³n indica quÃ© campo del elemento actual del bucle se debe mostrar en ese lugar (cada <td> es una columna)>  -->
             <td><%= htmlEncode(sport.getDisplay('average')) %></td>
     </tr>
     <% }); %>
