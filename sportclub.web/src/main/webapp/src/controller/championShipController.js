@@ -31,7 +31,7 @@ define(['controller/_championShipController','delegate/championShipDelegate'], f
     App.Controller.ChampionShipController = App.Controller._ChampionShipController.extend({
         language: function(){
             alert('Usted está viendo la versión en ESPAÑOL de esta página');
-        }
+        },
         cost: function(params){
             var dur= params.endDate - params.startDate;
             var cost = (Math.E^(dur*0.5));
